@@ -1,0 +1,2 @@
+# twicas-comments-visializer
+ツイキャスの大手配信者のコメント欄をワードクラウドで可視化する
