@@ -1,17 +1,29 @@
 import time
 import requests
 import json
+import pandas as pd
+import numpy as np
+import unicodedata
+import MeCab
+from collections import Counter
+import requests
+from bs4 import BeautifulSoup
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+import ipadic
+import re
 
-# ユーザー名(配信中のキャス主https://.../{user_id}) とトークンを入れる
-user_name = "gazyumarma22"
-bearer_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjM1M2E5NGMwZmE4MjJmZjVkZmQ5ODgwMjFhMWY1ZWFiOGU4ODU0ODU0OWMwMzMwOGI5ZjAxNjkwZTA5YjMwYjA3ZjE1ZWM1ZDJjZGU1MTFmIn0.eyJhdWQiOiJnMTE3NTQ1NDIxMDY2NzgwNDY3ODk5LmEzNTFjYTA3ZmZhNzNkNGY4ZTFmOTk1MzllYjUwOWUxYjA1YjkyYmNkOTQ4NTgxYmM4MDMxYjVkODdhNTE3YjciLCJqdGkiOiIzNTNhOTRjMGZhODIyZmY1ZGZkOTg4MDIxYTFmNWVhYjhlODg1NDg1NDljMDMzMDhiOWYwMTY5MGUwOWIzMGIwN2YxNWVjNWQyY2RlNTExZiIsImlhdCI6MTcyMDcxMDY5OCwibmJmIjoxNzIwNzEwNjk4LCJleHAiOjE3MzYyNjI2OTgsInN1YiI6Imc6MTE3NTQ1NDIxMDY2NzgwNDY3ODk5Iiwic2NvcGVzIjpbInJlYWQiLCJ3cml0ZSJdfQ.ESuV5mRzgRoEtp-QIP7aehAsQVequpVWNPK3uKckhiPZvCzgcsk1r0o1mQHVA1Mbus0_PuGI98I6_ftiXoN0asrAO9ZTufaw519U_SCKl594vD8mSpLfB1eOt5ZhFKmKwSjuXysUztg85cm7JUYwspIjQtgzH2nWrHyddOWM-nTsLDfGgbYrx533KbDbeJIBj6Ca0frtUi6JzaWcXAk_augZPlKwFr1n9NPvATWIysCZ_YOikFG49dDe7TyuLFPDAiFCQZaRKL6a1q7VNlvyhVi04VkAuXa6vCG32FhE-re9tMmiN8HixySrN67E2HJUX8dM3ZQBKWc9pj8E9iVMwg"
+# user_idはtwicasサイトのurlから取得できます(https://twitcasting.tv/gazyumarma22の例)
+# アクセストークンを入れてください
+user_name = "gazyumarma22" 
+bearer_token = ""  
 
 def get_last_movie_id(user_name, bearer_token):
     url = f"https://apiv2.twitcasting.tv/users/{user_name}"
     headers = {
     "Accept": "application/json",
     "X-Api-Version": "2.0",
-    "Authorization": f"Bearer {bearer_token}"  # {ACCESS_TOKEN} を実際のトークンに置き換えてください
+    "Authorization": f"Bearer {bearer_token}"  
 }
 
     response = requests.get(url, headers=headers)
@@ -75,19 +87,6 @@ print(f"comments counts: {counts}")
 # sample.txtファイルに書き込み
 with open("sample.txt", "w", encoding="utf-8") as file:
     file.write(text)
-
-
-import pandas as pd
-import numpy as np
-import unicodedata
-import MeCab
-from collections import Counter
-import requests
-from bs4 import BeautifulSoup
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-import ipadic
-import re
 
 # sample.txtからテキストを読み込み
 def read_file(file_path):
