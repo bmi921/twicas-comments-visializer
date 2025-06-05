@@ -11,6 +11,7 @@ https://twitcasting.tv/gazyumarma22の例なら、
 git clone https://github.com/bmi921/twicas-comments-visializer
 cd ./twicas-comments-visializer
 pip install　-r requirements.txt
+python main.py
 ```
 
 ツイキャスの大手配信者のコメント欄をワードクラウドで可視化する。  
