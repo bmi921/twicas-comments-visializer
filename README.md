@@ -18,3 +18,6 @@ python main.py
 クローンした後に、main.py に含まれるパッケージをインストールしてください。
 requirement.txt にパッケージ群は書いてあります。
 janome, wordcloud その他周辺技術ライブラリをインストールすれば正常に動きます。
+
+# 解析例
+![Image](https://github.com/user-attachments/assets/b1d51429-5f1d-447a-8092-c3d2012629b3)
