@@ -2,10 +2,11 @@
 
 `user_name`は
 twicas サイトの url から取得できます
-https://twitcasting.tv/gazyumarma22の例なら、
+https://twitcasting.tv/gazyumarma22
+の例なら、
 `user_name = "gazyumarma22"`としてください
 また、twicas からアクセストークンを取得し入れてください
-`bearer_token = ""`
+`bearer_token = "<YOUR_TOKEN>"`
 
 ```bash
 git clone https://github.com/bmi921/twicas-comments-visializer
